@@ -4,6 +4,14 @@ const cors = require('cors');
 const schema = require('./schema.js');
 const path = require('path');
 
+const jsonServer = require('json-server');
+const server = jsonServer.create();
+const router = jsonServer.router('db.json');
+const middlewares = jsonServer.defaults();
+//const port = process.env.PORT || 3000;
+
+//server.listen(port);
+
 const app = express();
 
 app.use(cors());
@@ -12,6 +20,9 @@ app.use('/graphql', expressGraphQL({
     schema: schema,
     graphiql: true
 }));
+
+server.use(middlewares);
+server.use(router);
 
 app.use(express.static('public'));
 
