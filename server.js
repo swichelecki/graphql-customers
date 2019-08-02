@@ -25,14 +25,14 @@ const middlewares = jsonServer.defaults();
 server.use(middlewares);
 server.use(router);
 
-const WEB_PORT = process.env.WEB_PORT || 4000;
+const PORT = process.env.PORT || 4000;
 
 app.listen(4000, () => {
-    console.log(`Website server is running on port ${WEB_PORT}`);
+    console.log(`Website server is running on port ${PORT}`);
 })
 
-const JSON_PORT = process.env.JSON_PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 server.listen(3000, () => {
-    console.log(`JSON-server server is running on port ${JSON_PORT}`);
+    console.log(`JSON-server server is running on port ${PORT}`);
 });
