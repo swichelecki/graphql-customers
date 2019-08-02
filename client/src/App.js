@@ -7,7 +7,7 @@ import EditCustomer from './components/EditCustomer';
 import './App.css';
 
 const client = new ApolloClient({
-    uri: 'http://localhost:4000/graphql'
+    uri: '/graphql'
 });
 
 export class App extends Component {
