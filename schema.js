@@ -28,14 +28,14 @@ const RootQuery = new GraphQLObjectType({
                 id: {type: GraphQLString}
             },
             resolve(parent, args){
-                return axios.get('http://localhost:3000/customers/' + args.id)
+                return axios.get('https://json-server-customers.herokuapp.com/customers/' + args.id)
                     .then(res => res.data);
             }
         },
         customers: {
             type: new GraphQLList(CustomerType),
             resolve(parent, args){
-                return axios.get('http://localhost:3000/customers')
+                return axios.get('https://json-server-customers.herokuapp.com/customers')
                     .then(res => res.data);
             }
         }
@@ -53,7 +53,7 @@ const mutation = new GraphQLObjectType({
                 age: {type: new GraphQLNonNull(GraphQLInt)},
             },
             resolve(parent, args){
-                return axios.post('http://localhost:3000/customers', {
+                return axios.post('https://json-server-customers.herokuapp.com/customers', {
                     name: args.name,
                     email: args.email,
                     age: args.age
@@ -67,7 +67,7 @@ const mutation = new GraphQLObjectType({
                 id: {type: new GraphQLNonNull(GraphQLString)}
             },
             resolve(parent, args){
-                return axios.delete('http://localhost:3000/customers/' + args.id, args)
+                return axios.delete('https://json-server-customers.herokuapp.com/customers/' + args.id, args)
                 .then(res => res.data);
             }
         },
@@ -80,7 +80,7 @@ const mutation = new GraphQLObjectType({
                 age: {type: GraphQLInt}
             },
             resolve(parent, args){
-                return axios.patch('http://localhost:3000/customers/' + args.id, args)
+                return axios.patch('https://json-server-customers.herokuapp.com/customers/' + args.id, args)
                 .then(res => res.data);
             }
         }
